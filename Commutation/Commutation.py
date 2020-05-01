@@ -36,6 +36,7 @@ class Ui_MainWindow(object):
         self.response = False  # дефолтная boolean переменная для пинга
         self.text = ""  # дефолтная переменная для текстовых данных
         self.db = 10  # дефолтная переменная для порогового значения
+
         # Команда 0х80 для перевода блока ЦОС в режим паузы
         self.c_pause_1 = '2e:00:80:00:00:00:00:14:00:00:00:00:6a:18:00:00:38:00:00:00:' \
                          '08:00:64:00:64:00:00:00:00:00:00:00:00:00:00:00:00:00:64:00:00:00:10:00:00:00:4c:80'
@@ -68,6 +69,7 @@ class Ui_MainWindow(object):
                       '00:00:00:00:00:00:00:00:08:00:ff:0f:ff:00:01:00:01:00:36:00'
         self.c_freq = c_freq.split(':')
         self.c_freq = ''.join(c_freq)
+
         self.D2 = []
         self.D3 = []
         self.D4 = []
@@ -5834,7 +5836,6 @@ class mywindow(QtWidgets.QMainWindow):
                   1, 3, 2, 4, 1, 5, 2, 6, 1, 7, 2, 8, 1, 2,
                   1, 3, 2, 4, 1, 5, 2, 6, 1, 7, 2, 8, 1, 2, 3, 5, 7, 8, 6, 4]
 
-
         if self.ui.response == True:
             # инициализация сокета
             sock_send = socket.socket(
@@ -5911,9 +5912,10 @@ class mywindow(QtWidgets.QMainWindow):
                     # кассет ЦОС)
                     max_lst = (i.pop(i.index(max(i))) for i in data)
                     # массив средне арифметических значений для каждого
-                    # состояния (среди 8 кассет ЦОС)
-                    #mean_lst = (statistics.mean(i) for i in data)
-                    mean_lst = [1 for i in range(len(data))]
+                    # состояния (среди 8 кассет ЦОС)                   
+
+                    mean_lst = (statistics.mean(i) for i in data)
+
                     # массив средне арифметических значений к максимальному для
                     # каждого состояния (среди 8 кассет ЦОС)
                     comparison = (
