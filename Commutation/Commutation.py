@@ -81,7 +81,7 @@ class Ui_MainWindow(object):
         self.c_techn_2 = ''.join(self.c_techn_2)  # преобразует байты в строку
         self.c_techn_3 = self.c_techn_3.split(':')
         self.c_techn_3 = ''.join(self.c_techn_3)  # преобразует байты в строку
-        #
+
         self.D2 = []
         self.D3 = []
         self.D4 = []
